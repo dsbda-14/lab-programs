@@ -1,84 +1,348 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DS NOTES | PDF Library</title>
-  <meta name="description" content="College study notes and downloadable PDF materials.">
+
+  <title>DS  | PDF Library</title>
+  <meta name="description"
+        content="Download DSBDA lab programs.">
+
   <style>
-    :root { --blue:#2457d6; --bg:#f5f7fb; --text:#172033; --muted:#667085; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family:Arial, sans-serif; background:var(--bg); color:var(--text); }
-    header { background:linear-gradient(135deg,#183c9e,#3975f6); color:white; padding:34px 18px; }
-    .wrap { max-width:900px; margin:auto; }
-    h1 { margin:0 0 8px; font-size:clamp(26px,5vw,38px); }
-    header p { margin:0; opacity:.92; }
-    main { padding:24px 18px 50px; }
-    .search { width:100%; padding:14px 15px; border:1px solid #d5dbea; border-radius:12px; font-size:16px; margin-bottom:18px; }
-    .hint { color:var(--muted); font-size:14px; margin:0 0 18px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; }
-    .card { background:white; border:1px solid #e4e8f0; border-radius:14px; padding:18px; box-shadow:0 4px 14px #15274b0a; }
-    .file { font-size:28px; }
-    .card h2 { font-size:18px; margin:10px 0 6px; }
-    .card p { color:var(--muted); line-height:1.45; min-height:40px; }
-    .btn { display:inline-block; background:var(--blue); color:white; text-decoration:none; border-radius:9px; padding:10px 14px; font-weight:bold; }
-    .empty { background:white; padding:22px; border-radius:12px; color:var(--muted); }
-    footer { text-align:center; color:var(--muted); padding:20px; font-size:13px; }
+    :root {
+      --blue: #2457d6;
+      --dark-blue: #183c9e;
+      --bg: #f5f7fb;
+      --text: #172033;
+      --muted: #667085;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      background: linear-gradient(135deg, #c7c9cc, #d4d7dd);
+      color: white;
+      padding: 34px 18px;
+    }
+
+    .wrap {
+      max-width: 1000px;
+      margin: auto;
+      width: 100%;
+    }
+
+    
+.site-title {
+  display: inline-block;
+  background: #ffffff;
+  color: #afb2bb;
+  padding: 10px 16px;
+  border-radius: 10px;
+  margin: 0 0 12px;
+  font-size: clamp(25px, 5vw, 36px);
+}
+
+
+    header p {
+      margin: 0;
+      opacity: 0.95;
+      font-size: 16px;
+    }
+
+    main {
+      padding: 24px 18px 50px;
+    }
+
+    .search {
+      display: block;
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #d5dbea;
+      border-radius: 12px;
+      font-size: 16px;
+      margin-bottom: 18px;
+      background: white;
+    }
+
+    .search:focus {
+      outline: 2px solid #9bb7ff;
+      border-color: var(--blue);
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0 0 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      min-width: 0;
+      background: white;
+      border: 1px solid #e4e8f0;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 4px 14px #15274b0a;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .file {
+      font-size: 30px;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      margin: 10px 0 6px;
+      overflow-wrap: anywhere;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+      flex: 1;
+      margin-bottom: 18px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      flex: 1 1 130px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 12px;
+      border-radius: 9px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      border: 1px solid var(--blue);
+      overflow-wrap: anywhere;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    
+.open-btn {
+  background: #ffffff;
+  color: #2457d6;
+  border: 1px solid #2457d6;
+}
+
+.open-btn:hover {
+  background: #edf2ff;
+}
+
+
+    .open-btn:hover {
+      background: var(--dark-blue);
+    }
+
+    .download-btn {
+      background: white;
+      color: var(--blue);
+    }
+
+    .download-btn:hover {
+      background: #edf2ff;
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid #9bb7ff;
+      outline-offset: 2px;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 20px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 26px 16px;
+      }
+
+      main {
+        padding: 20px 14px 36px;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        flex-basis: auto;
+        min-height: 46px;
+      }
+    }
   </style>
 </head>
-<body>
-  <header><div class="wrap">
-    <h1>📚 DS NOTES</h1>
-    <p>College Notes &amp; PDF Library</p>
-  </div></header>
-  <main class="wrap">
-    <input id="search" class="search" type="search" placeholder="Search notes (e.g. Python, DBMS)..." aria-label="Search notes">
-    <p class="hint">Choose a subject and tap Open PDF to read or download the notes.</p>
-    <section id="notes" class="grid" aria-live="polite"></section>
-  </main>
-  <footer>Study well • Share learning responsibly</footer>
-<script>
-  /*
-    ADD YOUR PDF DETAILS HERE.
-    1. Put the PDF file inside the "pdfs" folder.
-    2. Add one item below, matching the file name exactly.
-    3. Upload/commit the updated website to publish it.
-  */
-const notes = [
-  {
-    title: "ADT Lab Programs",
-    subject: "Advanced Database Technology",
-    file: "adt lab.pdf",
-    description: "ADT Lab Programs PDF"
-  }
-];
-  const container = document.getElementById("notes");
-  const search = document.getElementById("search");
 
-  function renderNotes() {
-    const query = search.value.trim().toLowerCase();
-    const filtered = notes.filter(n =>
-      [n.title, n.subject, n.description].join(" ").toLowerCase().includes(query)
-    );
-    if (!filtered.length) {
-      container.innerHTML = '<div class="empty">No notes listed yet. Add your PDF files and update the notes list in <b>index.html</b>.</div>';
-      return;
+<body>
+
+  <header>
+    <div class="wrap">
+      <h1 class="site-title"> DS </h1>
+      <p>  PDF Library</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <input
+      id="search"
+      class="search"
+      type="search"
+      placeholder="Search notes (e.g. Python, DBMS)..."
+      aria-label="Search notes"
+    >
+
+    <p class="hint">
+      Browse your study materials. Open a PDF to read it
+      or download it for offline use.
+    </p>
+
+    <section
+      id="notes"
+      class="grid"
+      aria-live="polite">
+    </section>
+
+  </main>
+
+  <footer>
+    Study well • Share learning responsibly
+  </footer>
+
+  <script>
+    /*
+      ADD YOUR PDF DETAILS HERE.
+
+      Keep the PDF file in the same folder as index.html.
+      The file name must match exactly.
+    */
+
+    const notes = [
+      {
+        title: "ADT Lab Programs",
+        subject: "Advanced Database Technology",
+        file: "adt lab.pdf",
+        description: "ADT Lab Programs PDF"
+      }
+
+      // Add more PDF objects here, separated by commas.
+    ];
+
+    const container = document.getElementById("notes");
+    const search = document.getElementById("search");
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[character]));
     }
-    container.innerHTML = filtered.map(n => `
-      <article class="card">
-        <div class="file">📄</div>
-        <h2>${escapeHTML(n.title)}</h2>
-        <p>${escapeHTML(n.description || n.subject || "PDF study notes")}</p>
-        <a class="btn" href="${encodeURI(n.file)}" target="_blank" rel="noopener">Open PDF ↗</a>
-      </article>`).join("");
-  }
-  function escapeHTML(s) {
-    return String(s).replace(/[&<>"']/g, c => ({
-      "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
-    }[c]));
-  }
-  search.addEventListener("input", renderNotes);
-  renderNotes();
-</script>
+
+    function renderNotes() {
+      const query = search.value.trim().toLowerCase();
+
+      const filtered = notes.filter(note =>
+        [
+          note.title,
+          note.subject,
+          note.description
+        ].join(" ").toLowerCase().includes(query)
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML =
+          '<div class="empty">No matching notes found. Try another search.</div>';
+        return;
+      }
+
+      container.innerHTML = filtered.map(note => {
+        const fileURL = encodeURI(note.file);
+        const safeTitle = escapeHTML(note.title);
+        const safeDescription = escapeHTML(
+          note.description || note.subject || "PDF study notes"
+        );
+
+        return `
+          <article class="card">
+            <div class="file" aria-hidden="true">📄</div>
+
+            <h2>${safeTitle}</h2>
+
+            <p>${safeDescription}</p>
+
+            <div class="actions">
+              <a
+                class="btn open-btn"
+                href="${fileURL}"
+                target="_blank"
+                rel="noopener">
+                👁 Open PDF
+              </a>
+
+              <a
+                class="btn download-btn"
+                href="${fileURL}"
+                download>
+                ⬇ Download PDF
+              </a>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    search.addEventListener("input", renderNotes);
+
+    renderNotes();
+  </script>
+
 </body>
 </html>
